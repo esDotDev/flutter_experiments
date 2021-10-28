@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_change_notifier/controller/auth_controller.dart';
-import 'package:riverpod_todo_change_notifier/controller/settings_controller.dart';
-import 'package:riverpod_todo_change_notifier/controller/todos_controller.dart';
-import 'package:riverpod_todo_change_notifier/providers.dart';
-import 'package:riverpod_todo_change_notifier/view/login_page.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/auth_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/settings_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/providers.dart';
+import 'package:riverpod_todo_with_change_notifier/view/login_page.dart';
 
 /// AppController performs top-level actions that are global in nature and do not fit neatly into any of the lower level controllers.
 class AppController {

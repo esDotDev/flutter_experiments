@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_change_notifier/controller/todos_controller.dart';
-import 'package:riverpod_todo_change_notifier/providers.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/providers.dart';
 
 import 'todo_item_render.dart';
 import 'todos_menu.dart';

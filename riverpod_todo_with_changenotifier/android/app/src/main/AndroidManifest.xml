@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter_riverpod">
+    package="com.example.riverpod_todo_with_changenotifier">
    <application
-        android:label="flutter_riverpod"
+        android:label="riverpod_todo_with_changenotifier"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

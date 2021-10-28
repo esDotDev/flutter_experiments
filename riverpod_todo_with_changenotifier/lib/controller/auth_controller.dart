@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_change_notifier/controller/app_controller.dart';
-import 'package:riverpod_todo_change_notifier/controller/settings_controller.dart';
-import 'package:riverpod_todo_change_notifier/controller/todos_controller.dart';
-import 'package:riverpod_todo_change_notifier/providers.dart';
-import 'package:riverpod_todo_change_notifier/service/auth_service.dart';
-import 'package:riverpod_todo_change_notifier/view/login_page.dart';
-import 'package:riverpod_todo_change_notifier/view/todos/todos_page.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/app_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/settings_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/providers.dart';
+import 'package:riverpod_todo_with_change_notifier/service/auth_service.dart';
+import 'package:riverpod_todo_with_change_notifier/view/login_page.dart';
+import 'package:riverpod_todo_with_change_notifier/view/todos/todos_page.dart';
 
 class AuthController extends ChangeNotifier {
   AuthController(this.read);

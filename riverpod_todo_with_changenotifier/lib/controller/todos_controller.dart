@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_change_notifier/providers.dart';
-import 'package:riverpod_todo_change_notifier/service/todo_service.dart';
+import 'package:riverpod_todo_with_change_notifier/providers.dart';
+import 'package:riverpod_todo_with_change_notifier/service/todo_service.dart';
 
 class TodosController extends ChangeNotifier {
   TodosController(this.read);
@@ -76,7 +76,6 @@ class TodosController extends ChangeNotifier {
   }
 }
 
-/// Simple data class for todo item
 class TodoItem {
   TodoItem(this.id, {required this.text, this.isCompleted = false});
   final String id;

@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_change_notifier/controller/app_controller.dart';
-import 'package:riverpod_todo_change_notifier/controller/auth_controller.dart';
-import 'package:riverpod_todo_change_notifier/controller/settings_controller.dart';
-import 'package:riverpod_todo_change_notifier/controller/todos_controller.dart';
-import 'package:riverpod_todo_change_notifier/service/auth_service.dart';
-import 'package:riverpod_todo_change_notifier/service/todo_service.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/app_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/auth_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/settings_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/service/auth_service.dart';
+import 'package:riverpod_todo_with_change_notifier/service/todo_service.dart';
 
 /// App
 final appController = Provider((ref) => AppController(ref.read));

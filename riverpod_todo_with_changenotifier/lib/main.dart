@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_change_notifier/providers.dart';
-import 'package:riverpod_todo_change_notifier/view/splash_page.dart';
+import 'package:riverpod_todo_with_change_notifier/providers.dart';
+import 'package:riverpod_todo_with_change_notifier/view/splash_page.dart';
 
 void main() => runApp(ProviderScope(child: MainApp()));
 

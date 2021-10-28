@@ -1,13 +1,12 @@
 import 'package:flutter/foundation.dart';
-import 'package:riverpod_todo_change_notifier/controller/todos_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
 
-/// Todo Service, performs remote CRUD operations for todos
+/// Performs remote CRUD operations for TodoItems
 class TodosService {
   TodosService({required this.userTokenDelegate});
-  String? get currentUser => userTokenDelegate();
-  final String? Function() userTokenDelegate;
 
-  String? get userToken => userTokenDelegate.call();
+  final String? Function() userTokenDelegate;
+  String? get userToken => userTokenDelegate();
 
   Future<List<TodoItem>> get() async {
     // TODO: Load items from db
@@ -21,21 +20,21 @@ class TodosService {
 
   Future<bool> add(List<TodoItem> items) async {
     for (var i in items) {
-      debugPrint("[TodosService] $currentUser/add/${i.id}");
+      debugPrint("[TodosService] $userToken/add/${i.id}");
     }
     return true;
   }
 
   Future<bool> update(List<TodoItem> items) async {
     for (var i in items) {
-      debugPrint("[TodosService] $currentUser/update/${i.id}");
+      debugPrint("[TodosService] $userToken/update/${i.id}");
     }
     return true;
   }
 
   Future<bool> delete(List<TodoItem> items) async {
     for (var i in items) {
-      debugPrint("[TodosService] $currentUser/delete/${i.id}");
+      debugPrint("[TodosService] $userToken/delete/${i.id}");
     }
     return true;
   }

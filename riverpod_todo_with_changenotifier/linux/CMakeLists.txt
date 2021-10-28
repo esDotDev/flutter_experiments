@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(runner LANGUAGES CXX)
 
-set(BINARY_NAME "flutter_riverpod")
-set(APPLICATION_ID "com.example.flutter_riverpod")
+set(BINARY_NAME "riverpod_todo_with_changenotifier")
+set(APPLICATION_ID "com.example.riverpod_todo_with_changenotifier")
 
 cmake_policy(SET CMP0063 NEW)
 

@@ -92,10 +92,10 @@ BEGIN
             VALUE "CompanyName", "com.example" "\0"
             VALUE "FileDescription", "A new Flutter project." "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "flutter_riverpod" "\0"
+            VALUE "InternalName", "riverpod_todo_with_changenotifier" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2021 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "flutter_riverpod.exe" "\0"
-            VALUE "ProductName", "flutter_riverpod" "\0"
+            VALUE "OriginalFilename", "riverpod_todo_with_changenotifier.exe" "\0"
+            VALUE "ProductName", "riverpod_todo_with_changenotifier" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

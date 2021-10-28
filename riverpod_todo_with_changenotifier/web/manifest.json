@@ -1,6 +1,6 @@
 {
-    "name": "flutter_riverpod",
-    "short_name": "flutter_riverpod",
+    "name": "riverpod_todo_with_changenotifier",
+    "short_name": "riverpod_todo_with_changenotifier",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
