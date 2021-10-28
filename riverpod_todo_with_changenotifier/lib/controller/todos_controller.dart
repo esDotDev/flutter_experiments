@@ -18,19 +18,22 @@ class TodosController extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Filters
-  EquatableList<TodoItem> get completed => EquatableList(_all.where((i) => i.isCompleted).toList());
-  EquatableList<TodoItem> get active => EquatableList(_all.where((i) => !i.isCompleted).toList());
+  /// Filters -  Shows two ways to do filtering
+  /// 1) Use EquatableList
+  EquatableList<TodoItem> get completedItems => EquatableList(_all.where((i) => i.isCompleted).toList());
+  EquatableList<TodoItem> get activeItems => EquatableList(_all.where((i) => !i.isCompleted).toList());
 
-  // static final activeItemsProvider = Provider((ref) {
-  //   final all = ref.watch(todosController).all;
-  //   return all.where((i) => !i.isCompleted).toList();
-  // });
-  //
-  // static final completedItemsProvider = Provider((ref) {
-  //   final all = ref.watch(todosController).all;
-  //   return all.where((i) => i.isCompleted).toList();
-  // });
+  /// 2) Create additional providers
+  /// TODO:These are not working properly to prevent rebuilds, not sure why...
+  static final activeItemsProvider = Provider((ref) {
+    final all = ref.watch(todosController).all;
+    return all.where((i) => !i.isCompleted).toList();
+  });
+
+  static final completedItemsProvider = Provider((ref) {
+    final all = ref.watch(todosController).all;
+    return all.where((i) => i.isCompleted).toList();
+  });
 
   /// Actions
   void reset() {
