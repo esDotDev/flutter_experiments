@@ -31,7 +31,6 @@ class AuthController extends ChangeNotifier {
   /// Actions
   Future<bool> loginAndShowInitialPage({required String user, required String password}) async {
     _user = await service.login(user: user, password: password);
-    _user = await service.login(user: user, password: password);
     if (isLoggedIn) {
       // Prefetch data before we show the initial view
       await todos.loadAll();
