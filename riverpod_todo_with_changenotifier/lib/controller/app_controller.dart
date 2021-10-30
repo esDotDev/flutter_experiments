@@ -11,8 +11,6 @@ class AppController {
   AppController(this.read);
   Reader read;
 
-  AuthController get auth => read(authController);
-  TodosController get todos => read(todosController);
   SettingsController get settings => read(settingsController);
 
   /// State
