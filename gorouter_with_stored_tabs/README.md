@@ -5,7 +5,7 @@ An example of implementing the classic "Stateful Tabs" or "Nested Tabs" style na
 * When changing tabs, the tabs should remember what page they were showing last
 * When pressing a selected tab, it should pop all routes and return to the root tab
 
-Classically this is achieved by having multiple child `Navigator`s that internally hold their own state by being rendered "Offstage".
+Classically this is achieved by having multiple child `Navigator`s that internally hold their own state by being rendered offstage.
 
 This takes a different approach:
 * Uses the `PageStorage` API to allow each route to restore state and remember scroll positions etc.
