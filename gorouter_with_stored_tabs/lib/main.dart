@@ -12,7 +12,7 @@ void main() => runApp(App());
 /*
 Create the following list of pages:
 /feed
-/feed/settings
+/feed/feedSettings
 /messages
 /messages/inbox
 /messages/outbox
