@@ -1,16 +1,15 @@
 # gorouter_with_stored_tabs
 
-A new Flutter application.
+An example of implementing the classic "Stateful Tabs" or "Nested Tabs" style navigation with GoRouter.
+* Pages within each tab should remember their state
+* When changing tabs, the tabs should remember what page they were showing last
+* When pressing a selected tab, it should pop all routes and return to the root tab
 
-## Getting Started
+Classically this is achieved by having multiple child `Navigator`s that internally hold their own state by being rendered "Offstage".
 
-This project is a starting point for a Flutter application.
+This takes a different approach:
+* Uses the `PageStorage` API to allow each route to restore state and remember scroll positions etc.
+* Uses the users location history to determine which view we should show when a tab is pressed.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Here is a video showing a basic walkthrough:
+http://screens.gskinner.com/shawn/FwRQ3vssXk.mp4
