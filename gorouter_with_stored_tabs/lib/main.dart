@@ -63,7 +63,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    MaterialPage buildPage(Widget child, GoRouterState state) => MaterialPage(child: child);
+    MaterialPage buildPage(Widget child, GoRouterState state) => MaterialPage(child: child, key: state.pageKey);
 
     goRouter = GoRouter(
       initialLocation: PagePaths.initial,
