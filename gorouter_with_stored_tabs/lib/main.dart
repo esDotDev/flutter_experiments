@@ -11,17 +11,17 @@ import 'demo_pages/messages_page.dart';
 void main() => runApp(App());
 /*
 Create the following list of pages:
-/home/
-/home/profile
+/feed
+/feed/settings
 /messages
 /messages/inbox
-/messages/inbox/message/23
+/messages/outbox
 
 Contained in a tab menu with these btns:
-tabBtn('/home/')
-tabBtn('/messages/')
+tabBtn('/feed')
+tabBtn('/messages')
 
-//
+// build a history stack manually because go_router doesn't keep track.
 router.addListener(() => history.add(router.path));
 */
 
