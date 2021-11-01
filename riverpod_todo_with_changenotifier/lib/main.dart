@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_todo_with_change_notifier/experiments.dart';
 import 'package:riverpod_todo_with_change_notifier/providers.dart';
 import 'package:riverpod_todo_with_change_notifier/view/splash_page.dart';
 
@@ -16,6 +17,18 @@ class _MainAppState extends ConsumerState<MainApp> {
   void initState() {
     super.initState();
     ref.read(appController).initApp(_navKey);
+
+    final list = List.generate(1000000, (index) => "item$index");
+
+    Future.delayed(Duration(seconds: 10)).then((value) async {
+      for (var i = 10; i-- > 0;) {
+        final t = DateTime.now().microsecondsSinceEpoch;
+        final results = list.where((element) => element.contains('item'));
+        print('found: ${results.length}');
+        print(DateTime.now().microsecondsSinceEpoch - t);
+        await Future.delayed(Duration(milliseconds: 500));
+      }
+    });
   }
 
   @override
@@ -32,4 +45,14 @@ class _MainAppState extends ConsumerState<MainApp> {
       home: const SplashPage(),
     );
   }
+}
+
+void doFoo() {
+  final fn = FooNotifier();
+  print(fn.state = FooState());
+  print(fn.state.count);
+
+  final sn = FooNotifierSN();
+  print(sn.state = FooState());
+  print(sn.state.count);
 }

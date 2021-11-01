@@ -5,6 +5,7 @@ import 'package:riverpod_todo_with_change_notifier/controller/settings_controlle
 import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
 import 'package:riverpod_todo_with_change_notifier/providers.dart';
 import 'package:riverpod_todo_with_change_notifier/view/login_page.dart';
+import 'package:riverpod_todo_with_change_notifier/view/todos/todos_page.dart';
 
 /// AppController performs top-level actions that are global in nature and do not fit neatly into any of the lower level controllers.
 class AppController {
@@ -22,10 +23,15 @@ class AppController {
     // Save navKey so we can manipulate the navigation stack and show dialogs
     this.navKey = navKey;
     await settings.load();
+    await auth.load();
     // Simulate some initialization tasks
     await Future.delayed(const Duration(seconds: 1));
     // Show an initial page, replacing the SplashView that is shown initially
-    pushPageRoute(const LoginPage());
+    if (auth.user != null) {
+      pushPageRoute(const TodosPage());
+    } else {
+      pushPageRoute(const LoginPage());
+    }
   }
 
   // Provide a simplified navigator.push api for your various views and controllers

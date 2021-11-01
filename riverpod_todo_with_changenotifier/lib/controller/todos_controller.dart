@@ -1,6 +1,6 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_todo_with_change_notifier/common/equatable_list.dart';
 import 'package:riverpod_todo_with_change_notifier/providers.dart';
 import 'package:riverpod_todo_with_change_notifier/service/todo_service.dart';
 
@@ -36,23 +36,19 @@ class TodosController extends ChangeNotifier {
   });
 
   /// Actions
-  void reset() {
-    all.clear();
-  }
+  void reset() => all = [];
 
   Future<void> loadAll() async {
     all = await service.get();
   }
 
   Future<void> addItem(TodoItem value) async {
-    all.add(value);
-    notifyListeners();
+    all = List.from(all)..add(value);
     await service.add([value]);
   }
 
   Future<void> delete(TodoItem value) async {
-    all.removeWhere((item) => item.id == value.id);
-    notifyListeners();
+    all = List.from(all)..removeWhere((item) => item.id == value.id);
     await service.delete([value]);
   }
 
@@ -73,9 +69,9 @@ class TodosController extends ChangeNotifier {
   }
 
   Future<void> deleteAll() async {
-    all.clear();
-    notifyListeners();
-    await service.delete(all);
+    final toDelete = all;
+    all = [];
+    await service.delete(toDelete);
   }
 }
 
@@ -90,13 +86,4 @@ class TodoItem {
         text: text ?? this.text,
         isCompleted: isCompleted ?? false,
       );
-}
-
-/// Wraps a list and performs a deep comparison on it for equality checks
-class EquatableList<T> with EquatableMixin {
-  EquatableList(this.data);
-  final List<T> data;
-
-  @override
-  List<Object?> get props => data;
 }

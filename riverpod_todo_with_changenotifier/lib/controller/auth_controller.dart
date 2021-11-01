@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_todo_with_change_notifier/controller/app_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../common/change_notifier_change_mixin.dart';
 import 'package:riverpod_todo_with_change_notifier/controller/settings_controller.dart';
 import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
 import 'package:riverpod_todo_with_change_notifier/providers.dart';
@@ -9,6 +13,7 @@ import 'package:riverpod_todo_with_change_notifier/view/login_page.dart';
 import 'package:riverpod_todo_with_change_notifier/view/todos/todos_page.dart';
 
 class AuthController extends ChangeNotifier {
+  static const _fileName = 'auth.dat';
   AuthController(this.read);
   Reader read;
 
@@ -44,9 +49,20 @@ class AuthController extends ChangeNotifier {
   Future<void> logoutAndShowLoginPage() async {
     _user = null;
     todos.reset();
-    settings.reset();
+    //settings.reset();
     service.logout();
     app.pushPageRoute(const LoginPage());
     notifyListeners();
+  }
+
+  /// Actions
+  Future<void> save() async {
+    final jsonString = jsonEncode({'_user': user});
+    (await SharedPreferences.getInstance()).setString(_fileName, jsonString);
+  }
+
+  Future<void> load() async {
+    final json = jsonDecode((await SharedPreferences.getInstance()).getString(_fileName) ?? '{}');
+    _user = json['_user'];
   }
 }

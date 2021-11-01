@@ -3,10 +3,9 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingsController with ChangeNotifier {
+class SettingsController extends ChangeNotifier {
   final String _fileName = 'settings.dat';
 
-  /// State
   bool _darkMode = false;
   bool get darkMode => _darkMode;
   set darkMode(bool darkMode) {
@@ -17,19 +16,18 @@ class SettingsController with ChangeNotifier {
 
   /// Actions
   Future<void> save() async {
-    _setString(jsonEncode({'darkMode': darkMode}));
+    // Serialize
+    final json = {'darkMode': darkMode};
+    // Write
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString(_fileName, jsonEncode(json));
   }
 
   Future<void> load() async {
-    final json = jsonDecode((await SharedPreferences.getInstance()).getString(_fileName) ?? '{}');
-    _darkMode = json['darkMode'] ?? false;
+    // Read
+    final prefs = await SharedPreferences.getInstance();
+    final json = jsonDecode(prefs.getString(_fileName) ?? '{}');
+    // Deserialize
+    _darkMode = json['darkMode'] ?? _darkMode;
   }
-
-  void reset() async {
-    await _setString(jsonEncode({}));
-    await load();
-    notifyListeners();
-  }
-
-  Future<void> _setString(String value) async => (await SharedPreferences.getInstance()).setString(_fileName, value);
 }
