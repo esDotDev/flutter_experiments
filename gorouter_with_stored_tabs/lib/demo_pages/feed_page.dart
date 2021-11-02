@@ -33,7 +33,7 @@ class _FeedPageState extends State<FeedPage> {
               ),
               Expanded(
                 child: ListView(
-                    key: const PageStorageKey('feedPage-List1'),
+                    key: PageStorageKey('${GoRouter.of(context).location}-List1'),
                     children: List.generate(100, (index) => Text('Feed Item $index', style: TextStyle(fontSize: 32)))),
               ),
             ],

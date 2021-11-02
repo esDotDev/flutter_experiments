@@ -38,7 +38,7 @@ class PagePaths {
   static late String messages = '/messages';
   static late String messagesInbox = 'inbox';
   static late String messagesOutbox = 'outbox';
-  static late String messageDetails = '/message/:messageId';
+  static late String messageDetails = 'message/:messageId';
 }
 
 class App extends StatefulWidget {
@@ -77,7 +77,7 @@ class _AppState extends State<App> {
         );
       },
       routes: [
-        // User tab stack
+        // Feed tab stack
         GoRoute(
           path: PagePaths.feed,
           pageBuilder: (_, state) => buildPage(const FeedPage(), state),
@@ -146,7 +146,7 @@ class _SmartTabBtn extends StatelessWidget {
   }
 }
 
-/// Basic tab layer. Puts an Expanded 'content' widget in a column, with a row of btns on the bottom.
+/// Basic tab layout. Puts an Expanded 'content' widget in a column, with a row of btns on the bottom.
 /// This could represent any type of persistent menu system (desktop style side menu, web style top navigation, sliding drawer etc).
 class _TabScaffold extends StatelessWidget {
   const _TabScaffold(this.content, this.btns, {Key? key}) : super(key: key);
