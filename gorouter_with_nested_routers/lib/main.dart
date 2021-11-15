@@ -34,6 +34,7 @@ late String messagesPath = '/messages';
 late String messagesInboxPath = 'inbox';
 late String messagesOutboxPath = 'outbox';
 
+// todo: fix deeplinking/refresh on web. It seems '/messages' is not matching '/:tabId' so goRouter redirects to initial route.
 // todo: Add fullscreen message details page... How??
 // late String messageDetailsPath = 'message/:messageId';
 
@@ -57,7 +58,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    // Have to listen to both child routers here because the root goRouter does not always dispatch change events when path is changed
+    // todo: fix: Have to listen to both child routers instead of the parent here because the root goRouter will not always dispatch change events when path is changed
     messageRouter.addListener(() => App.recordLocationHistory(messageRouter.location));
     feedRouter.addListener(() => App.recordLocationHistory(feedRouter.location));
   }
