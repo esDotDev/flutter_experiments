@@ -11,6 +11,10 @@ class LoginPage extends ConsumerStatefulWidget {
   ConsumerState<LoginPage> createState() => _LoginViewState();
 }
 
+abstract class Actions {
+  AuthController getAuthController();
+}
+
 class _LoginViewState extends ConsumerState<LoginPage> {
   bool _isLoading = false;
   set isLoading(bool value) => setState(() => _isLoading = value);
