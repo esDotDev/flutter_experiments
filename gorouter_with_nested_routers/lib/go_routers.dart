@@ -13,12 +13,19 @@ MaterialPage buildPage(Widget child, ValueKey? key) => MaterialPage(child: child
 late final GoRouter rootGoRouter = GoRouter(
   initialLocation: initialPath,
   routes: [
+    /// We want to let all the routes flow down to the child routes, simply parsing the `/tab/`
+    /// portion of the url at this point.
+    /// Currently it's implemented in a pretty awkward way in by declaring multiple routes with different paths,
+    /// pointing to the same view and using the same key (or no key)
+    /// todo: add some wild-card / pass-through syntax, so we can use a single `GoRoute` with `path: '/*'`,
     GoRoute(
       path: '/:tab',
       pageBuilder: (_, state) {
         return buildPage(TabScaffold(state.params['tab'] ?? ''), null);
       },
     ),
+    // Need to declare these redundant routes,
+    // otherwise something like `/messages/inbox` will throw a non-matching error
     GoRoute(
       path: '/:tab/:foo',
       pageBuilder: (_, state) {

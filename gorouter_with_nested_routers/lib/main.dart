@@ -34,8 +34,8 @@ late String messagesPath = '/messages';
 late String messagesInboxPath = 'inbox';
 late String messagesOutboxPath = 'outbox';
 
-// TODO: Add fullscreen message details page... How??
-late String messageDetailsPath = 'message/:messageId';
+// todo: Add fullscreen message details page... How??
+// late String messageDetailsPath = 'message/:messageId';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -57,6 +57,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
+    // Have to listen to both child routers here because the root goRouter does not always dispatch change events when path is changed
     messageRouter.addListener(() => App.recordLocationHistory(messageRouter.location));
     feedRouter.addListener(() => App.recordLocationHistory(feedRouter.location));
   }
@@ -135,6 +136,7 @@ class _SmartTabBtn extends StatelessWidget {
         newPath = mostRecentSubPage;
       }
     }
+    // todo: fix: we have to call .go() on both the child and parent routers
     router.go(newPath);
     nestedRouter.go(newPath);
   }

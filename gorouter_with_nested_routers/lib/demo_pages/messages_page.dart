@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import '../go_routers.dart';
 import '../main.dart';
 
-// TODO: Add inbox/outbox btns
 class MessagesPage extends StatefulWidget {
   const MessagesPage({Key? key}) : super(key: key);
 
@@ -29,12 +28,14 @@ class _MessagesPageState extends State<MessagesPage> {
             OutlinedButton(
                 child: const Text("INBOX", style: TextStyle(fontSize: 42)),
                 onPressed: () {
+                  // todo: fix: currently we have to call .go on both the child and parent routers,
                   context.go('$messagesPath/$messagesInboxPath');
                   rootGoRouter.go('$messagesPath/$messagesOutboxPath');
                 }),
             OutlinedButton(
                 child: const Text("OUTBOX", style: TextStyle(fontSize: 42)),
                 onPressed: () {
+                  // todo: fix: currently we have to call .go on both the child and parent routers,
                   context.go('$messagesPath/$messagesOutboxPath');
                   rootGoRouter.go('$messagesPath/$messagesOutboxPath');
                 }),

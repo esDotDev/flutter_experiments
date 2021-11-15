@@ -26,6 +26,7 @@ class _FeedPageState extends State<FeedPage> {
                 IconButton(
                     icon: const Icon(Icons.settings),
                     onPressed: () {
+                      // todo: fix: currently we have to call .go on both the child and parent routers,
                       context.go('$feedPath/$feedSettingsPath');
                       rootGoRouter.go('$feedPath/$feedSettingsPath');
                     }),
