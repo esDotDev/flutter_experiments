@@ -53,8 +53,6 @@ class App extends StatefulWidget {
   State<App> createState() => _AppState();
 }
 
-MaterialPage buildPage(Widget child, ValueKey? key) => MaterialPage(child: child, key: key);
-
 class _AppState extends State<App> {
   @override
   void initState() {

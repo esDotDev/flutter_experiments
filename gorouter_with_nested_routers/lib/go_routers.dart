@@ -8,6 +8,8 @@ import 'demo_pages/messages_outbox_page.dart';
 import 'demo_pages/messages_page.dart';
 import 'main.dart';
 
+MaterialPage buildPage(Widget child, ValueKey? key) => MaterialPage(child: child, key: key);
+
 late final GoRouter rootGoRouter = GoRouter(
   initialLocation: initialPath,
   routes: [
@@ -43,9 +45,15 @@ final GoRouter messageRouter = GoRouter(
       pageBuilder: (_, s) => buildPage(const MessagesPage(), s.pageKey),
       routes: [
         // /messages/inbox
-        GoRoute(path: messagesInboxPath, pageBuilder: (_, s) => buildPage(const InboxPage(), s.pageKey)),
+        GoRoute(
+          path: messagesInboxPath,
+          pageBuilder: (_, s) => buildPage(const InboxPage(), s.pageKey),
+        ),
         // /messages/outbox
-        GoRoute(path: messagesOutboxPath, pageBuilder: (_, s) => buildPage(const OutboxPage(), s.pageKey)),
+        GoRoute(
+          path: messagesOutboxPath,
+          pageBuilder: (_, s) => buildPage(const OutboxPage(), s.pageKey),
+        ),
       ],
     ),
   ],
@@ -61,7 +69,10 @@ final GoRouter feedRouter = GoRouter(
       pageBuilder: (_, state) => buildPage(const FeedPage(), state.pageKey),
       routes: [
         // /feed/settings
-        GoRoute(path: feedSettingsPath, pageBuilder: (_, s) => buildPage(const FeedSettingsPage(), s.pageKey)),
+        GoRoute(
+          path: feedSettingsPath,
+          pageBuilder: (_, s) => buildPage(const FeedSettingsPage(), s.pageKey),
+        ),
       ],
     ),
   ],
