@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_with_change_notifier/experiments.dart';
 import 'package:riverpod_todo_with_change_notifier/providers.dart';
 import 'package:riverpod_todo_with_change_notifier/view/splash_page.dart';
 
@@ -16,7 +15,7 @@ class _MainAppState extends ConsumerState<MainApp> {
   @override
   void initState() {
     super.initState();
-    ref.read(appController).initApp(_navKey);
+    ref.read(appControllerProvider).initApp(_navKey);
 
     final list = List.generate(1000000, (index) => "item$index");
 
@@ -34,7 +33,7 @@ class _MainAppState extends ConsumerState<MainApp> {
   @override
   Widget build(BuildContext context) {
     // Listen  to the dark mode property of SettingsState
-    bool darkMode = ref.watch(settingsController.select((s) => s.darkMode));
+    bool darkMode = ref.watch(settingsControllerProvider.select((s) => s.darkMode));
     return MaterialApp(
       navigatorKey: _navKey,
       theme: ThemeData.light(),
@@ -45,14 +44,4 @@ class _MainAppState extends ConsumerState<MainApp> {
       home: const SplashPage(),
     );
   }
-}
-
-void doFoo() {
-  final fn = FooNotifier();
-  print(fn.state = FooState());
-  print(fn.state.count);
-
-  final sn = FooNotifierSN();
-  print(sn.state = FooState());
-  print(sn.state.count);
 }

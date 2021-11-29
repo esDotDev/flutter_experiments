@@ -16,6 +16,7 @@ dependencies:
     sdk: flutter
 
   go_router: ^2.2.1
+  animate_do:
 
 dev_dependencies:
   flutter_test:

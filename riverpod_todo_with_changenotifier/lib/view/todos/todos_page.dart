@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/managers/todos_controller.dart';
 import 'package:riverpod_todo_with_change_notifier/providers.dart';
 
 import 'todo_item_render.dart';
@@ -16,17 +16,17 @@ class TodosPage extends ConsumerStatefulWidget {
 
 class _TodosViewState extends ConsumerState<TodosPage> {
   // Use authController.logout action to handle logout
-  void _handleLogoutPressed() => ref.read(authController).logoutAndShowLoginPage();
+  void _handleLogoutPressed() => ref.read(authControllerProvider).logout();
   // Use settingsController.darkMode field to change settings
-  void _handleDarkModeToggled(bool value) => ref.read(settingsController).darkMode = value;
+  void _handleDarkModeToggled(bool value) => ref.read(settingsControllerProvider).darkMode = value;
 
   @override
   Widget build(BuildContext context) {
     //debugPrint("build main");
     bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
     // Watch SettingsController to determine darkMode
-    bool darkMode = ref.watch(settingsController).darkMode;
-    String? currentUser = ref.watch(authController).user;
+    bool darkMode = ref.watch(settingsControllerProvider).darkMode;
+    String? currentUser = ref.watch(authControllerProvider).user;
 
     return Scaffold(
       body: Padding(
@@ -55,7 +55,7 @@ class _TodosViewState extends ConsumerState<TodosPage> {
                     flex: 2,
                     child: Consumer(builder: (_, ref, __) {
                       debugPrint("Build Active");
-                      List<TodoItem> items = ref.watch(todosController.select((m) => m.activeItems)).data;
+                      List<TodoItem> items = ref.watch(todosControllerProvider.select((m) => m.activeItems)).data;
                       //List<TodoItem> items = ref.watch(TodosController.activeItemsProvider);
                       final children = items.map((i) => TodoItemRenderer(i)).toList();
                       return _BuildCounter(ListView(children: children));
@@ -68,7 +68,7 @@ class _TodosViewState extends ConsumerState<TodosPage> {
                   /// Right side  (todosController.complete)
                   Expanded(
                     child: Consumer(builder: (_, ref, __) {
-                      List<TodoItem> items = ref.watch(todosController.select((m) => m.completedItems)).data;
+                      List<TodoItem> items = ref.watch(todosControllerProvider.select((m) => m.completedItems)).data;
                       //List<TodoItem> items = ref.watch(TodosController.completedItemsProvider);
                       final children = items.map((i) => TodoItemRenderer(i)).toList();
                       return _BuildCounter(ListView(children: children));

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_with_change_notifier/controller/auth_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/managers/auth_controller.dart';
 import 'package:riverpod_todo_with_change_notifier/providers.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -23,13 +23,13 @@ class _LoginViewState extends ConsumerState<LoginPage> {
   String _password = 'ross';
 
   // Get a reference to the authController that can be used to sign in
-  AuthController get auth => ref.read(authController);
+  AuthController get auth => ref.read(authControllerProvider);
 
   // Use the authController.login action to complete login, it will show a new page if login was successful.
   void _handleLoginPressed() async {
     if (_user.isEmpty || _password.isEmpty) return;
     isLoading = true;
-    bool success = await auth.loginAndShowInitialPage(user: _user, password: _password);
+    bool success = await auth.login(user: _user, password: _password);
     if (!success) isLoading = false;
   }
 

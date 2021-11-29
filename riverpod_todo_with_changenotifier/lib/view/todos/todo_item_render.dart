@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/managers/todos_controller.dart';
 import 'package:riverpod_todo_with_change_notifier/providers.dart';
 
 /// Renders a single [TodoItem], calls actions on the [TodoController] to respond to user input
@@ -8,7 +8,7 @@ class TodoItemRenderer extends ConsumerWidget {
   const TodoItemRenderer(this.item, {Key? key}) : super(key: key);
   final TodoItem item;
 
-  TodosController todos(WidgetRef ref) => ref.read(todosController);
+  TodosController todos(WidgetRef ref) => ref.read(todosControllerProvider);
 
   /// Event handlers
   void _handleDeletePressed(WidgetRef ref) => todos(ref).delete(item);

@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/managers/todos_controller.dart';
 import 'package:riverpod_todo_with_change_notifier/providers.dart';
 
 /// Allows user to add new [TodoItem] and bulk modify items.
@@ -17,7 +17,7 @@ class _TodosMenuState extends ConsumerState<TodosMenu> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _textFocus = FocusNode();
 
-  TodosController get todos => ref.read(todosController);
+  TodosController get todos => ref.read(todosControllerProvider);
 
   void _handleAddItemPressed() {
     if (_textController.value.text.isEmpty) return;

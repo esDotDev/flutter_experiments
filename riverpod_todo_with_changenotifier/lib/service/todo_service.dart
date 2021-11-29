@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:riverpod_todo_with_change_notifier/controller/todos_controller.dart';
+import 'package:riverpod_todo_with_change_notifier/managers/todos_controller.dart';
 
 /// Performs remote CRUD operations for TodoItems
 class TodosService {
