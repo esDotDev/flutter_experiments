@@ -8,16 +8,17 @@ class AppManager with ChangeNotifier {
   final FileService Function() locateFileService;
 
   int _count1 = 0;
+
   int get count1 => _count1;
-  set count1(int value) {
-    _count1 = value;
+  set count1(int count1) {
+    _count1 = count1;
     notifyListeners();
   }
 
   int _count2 = 0;
   int get count2 => _count2;
-  set count2(int value) {
-    _count2 = value;
+  set count2(int count1) {
+    _count2 = count1;
     notifyListeners();
   }
 }

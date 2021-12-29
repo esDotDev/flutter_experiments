@@ -16,7 +16,7 @@ class MainContentPage extends StatelessWidget {
             Expanded(child: rightSide),
           ],
         ),
-        const Text(title, style: TextStyle(fontSize: 24)),
+        const Text('GET IT', style: TextStyle(fontSize: 24)),
       ],
     );
   }
