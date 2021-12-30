@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/logic/bluetooth_manager.dart';
 import 'package:flutter_app/logic/data/bluetooth_device_info.dart';
 import 'package:flutter_app/main.dart';
 import 'package:flutter_app/ui/common/distance_text.dart';
@@ -11,8 +10,7 @@ class ListDevicesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //var devices = ref.watch(bluetooth.select((b) => b.visibleDevices.value));
-    var devices = ref.watch(bluetooth).visibleDevices.value;
+    final devices = ref.watch(bluetooth.select((b) => b.visibleDevices.value));
     print('build deviceList, ${devices.length}');
     return ListView(
       children: devices.map(_DeviceListTile.new).toList(),

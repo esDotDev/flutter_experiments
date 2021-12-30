@@ -9,7 +9,7 @@ class DistanceText extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool useMetric = ref.watch(settings.select((SettingsManager s) => s.useMetric.value));
+    bool useMetric = ref.watch(settings.select((s) => s.useMetric.value));
     double d = useMetric ? distance : distance * 3.28084;
     String distanceString = d.toStringAsFixed(1);
     distanceString += useMetric ? 'm' : 'ft';

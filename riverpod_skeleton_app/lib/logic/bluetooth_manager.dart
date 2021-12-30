@@ -10,7 +10,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 /// Manages a service that scans bluetooth devices, and exposes that data to the UI.
 /// Provides common actions related to bluetooth.
 class BlueToothManager with ChangeNotifier {
-  BlueToothManager(this.ref);
+  BlueToothManager(this.ref) {
+    ref.onDispose(dispose);
+  }
   final Ref ref;
 
   // Request a service from riverpod to perform device scanning, this allows us to easily mock it if we need.
@@ -31,8 +33,10 @@ class BlueToothManager with ChangeNotifier {
   }
 
   @override
-  //TODO: Figure out how to implement this
-  FutureOr onDispose() async => service.stopScan();
+  FutureOr dispose() async {
+    service.stopScan();
+    super.dispose();
+  }
 
   void _handleDeviceFound(BtDeviceInfo device) {
     // Remove device if it already exists and add it back in to the list

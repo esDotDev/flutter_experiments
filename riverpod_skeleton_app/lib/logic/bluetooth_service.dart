@@ -10,9 +10,7 @@ class BlueToothService {
 
   void stopScan() => print('todo: implement stopScan');
 
-  @override
-  //TODO: Call this with riverpod
-  FutureOr onDispose() {
+  void dispose() {
     print('todo: implement BlueToothService.onDispose');
   }
 }

@@ -26,11 +26,10 @@ class _MainAppState extends ConsumerState<MainApp> {
     super.initState();
   }
 
-  /// Tear down the app, we can rely on GetIt.reset() action, and add [Disposable] interfaces to any
-  /// logic classes that need it.
   @override
   void dispose() {
-    // GetIt.I.reset(); //TODO: Reset provider properly
+    /// Cleanup any providers with ProviderContainer.dispose();
+    ProviderScope.containerOf(context).dispose();
     super.dispose();
   }
 
