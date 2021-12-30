@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/logic/settings_manager.dart';
 import 'package:flutter_app/main.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:get_it_mixin/get_it_mixin.dart';
 
-class SettingsDrawer extends StatelessWidget with GetItMixin {
+class SettingsDrawer extends ConsumerWidget {
   SettingsDrawer({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // Bind to various properties on the SettingsManager
-    bool useMetric = watchX((SettingsManager m) => m.useMetric);
-    bool darkMode = watchX((SettingsManager m) => m.darkMode);
+    bool useMetric = ref.watch(settings.select((m) => m.useMetric.value));
+    bool darkMode = ref.watch(settings.select((m) => m.darkMode.value));
     // Handle ui actions using the settings manager, l
-    void handleUseMetricChanged(bool value) async => settings.useMetric.value = value;
+    void handleUseMetricChanged(bool value) async => ref.read(settings).useMetric.value = value;
     // lock darkMode behind a paywall for the sake of example
     void handleDarkModeChanged(bool value) async {
-      bool hasPro = await purchases.showSheetIfRequired(context);
+      bool hasPro = await ref.read(purchases).showSheetIfRequired(context);
       if (hasPro) {
-        settings.darkMode.value = value;
+        ref.read(settings).darkMode.value = value;
       }
     }
 
