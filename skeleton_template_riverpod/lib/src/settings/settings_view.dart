@@ -14,7 +14,7 @@ class SettingsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(settings.select((s) => s.themeMode));
+    final themeMode = ref.watch(settingsProvider.select((s) => s.themeMode));
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -29,7 +29,7 @@ class SettingsView extends ConsumerWidget {
           // Read the selected themeMode from the controller
           value: themeMode,
           // Call the updateThemeMode method any time the user selects a theme.
-          onChanged: ref.read(settings).updateThemeMode,
+          onChanged: ref.read(settingsProvider).updateThemeMode,
           items: const [
             DropdownMenuItem(
               value: ThemeMode.system,

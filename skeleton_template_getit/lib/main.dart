@@ -17,4 +17,3 @@ void registerSingletons() {
 }
 
 SettingsController get settings => GetIt.I.get<SettingsController>();
-SettingsService get settingsService => GetIt.I.get<SettingsService>();

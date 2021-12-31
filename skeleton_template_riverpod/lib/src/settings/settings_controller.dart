@@ -14,7 +14,7 @@ class SettingsController with ChangeNotifier {
   final Ref ref;
 
   // Fetch SettingsService with dependency injection so it can be easily mocked
-  SettingsService get _settingsService => ref.read(settingsService);
+  SettingsService get _settingsService => ref.read(settingsServiceProvider);
 
   // Make ThemeMode a private variable so it is not updated directly without
   // also persisting the changes with the SettingsService.

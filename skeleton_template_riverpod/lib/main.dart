@@ -11,5 +11,5 @@ void main() async {
   );
 }
 
-final settings = ChangeNotifierProvider((ref) => SettingsController(ref));
-final settingsService = Provider((ref) => SettingsService());
+final settingsProvider = ChangeNotifierProvider((ref) => SettingsController(ref));
+final settingsServiceProvider = Provider((ref) => SettingsService());

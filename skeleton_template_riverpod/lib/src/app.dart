@@ -21,7 +21,7 @@ class _MyAppState extends ConsumerState<MyApp> {
 
   @override
   void initState() {
-    ref.read(settings).loadSettings().then((_) {
+    ref.read(settingsProvider).loadSettings().then((_) {
       setState(() => _hasSettingsLoaded = true);
     });
     super.initState();
@@ -30,7 +30,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   @override
   Widget build(BuildContext context) {
     if (_hasSettingsLoaded == false) return Container();
-    final themeMode = ref.watch(settings.select((s) => s.themeMode));
+    final themeMode = ref.watch(settingsProvider.select((s) => s.themeMode));
     return MaterialApp(
 // Providing a restorationScopeId allows the Navigator built by the
 // MaterialApp to restore the navigation stack when a user leaves and
